@@ -1,0 +1,12 @@
+cython_bbox
+gradio==5.22.0
+ipython
+lap
+matplotlib
+numpy
+openai
+opencv_python
+python_dateutil
+scipy
+torch
+ultralytics
