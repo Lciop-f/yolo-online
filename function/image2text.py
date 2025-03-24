@@ -7,7 +7,6 @@ import json
 import re
 
 
-os.environ['modelscope_token'] = '6869d024-4110-4f8c-8b51-c1f6fe424550'
 def image_encoder(image):
     _, buffer = cv2.imencode('.jpg', image)
     img_base = base64.b64encode(buffer).decode('utf-8')
