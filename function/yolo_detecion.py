@@ -44,10 +44,10 @@ def image_predict(model,image,conf,**kwargs):
 
 def video_predict(model,video,conf,**kwargs):
     if model is not None and video is not None:
-        tmp_path = f"output_{uuid.uuid4()}.mp4"
+        tmp_path = f"output_{uuid.uuid4()}.webm"
         result = model.predict(source=video,conf=conf,stream=True,**kwargs)
         W,H,N = next(result).plot().shape
-        fourcc = cv2.VideoWriter_fourcc(*'H264')
+        fourcc = cv2.VideoWriter_fourcc(*'VP90')
         output = cv2.VideoWriter(tmp_path, fourcc, 30, (H,W))
         for re in result:
             image = re.plot()
