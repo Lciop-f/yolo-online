@@ -82,11 +82,11 @@ def file_predict(model,file,conf,**kwargs):
 
 def video_track(model,video,conf,cls=2,**kwargs):
     if model is not None and video is not None:
-        tmp_path = f"output_{uuid.uuid4()}.mp4"
+        tmp_path = f"output_{uuid.uuid4()}.webm"
         tracker = Mytracker(make_parser().parse_args())
         result = model.predict(source=video,conf=conf,stream=True,classes=[cls],**kwargs)
         W,H,N = next(result).plot().shape
-        fourcc = cv2.VideoWriter_fourcc(*'H264')
+        fourcc = cv2.VideoWriter_fourcc(*'VP90')
         output = cv2.VideoWriter(tmp_path, fourcc, 30, (H,W))
         for re in result:
             dets = torch.cat([re.boxes.xyxy, re.boxes.conf.unsqueeze(1)], dim=1)
